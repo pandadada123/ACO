@@ -11,26 +11,7 @@ cvx_begin
 cvx_end
  
 % plot the given datasets
-visualize(X_train, labels_train, 'training data');hold on
-
-maxxy = max(X_train);
-minxy = min(X_train);
-maxy = maxxy(2);
-miny = minxy(2);
-y = miny : (maxy-miny)/10 : maxy
-x = -(w(2)*y+b) / w(1);
-plot(x,y);
-
-visualize(X_test, labels_test, 'testing data');
-
-hold on
-
-maxxy = max(X_test);
-minxy = min(X_test);
-maxy = maxxy(2);
-miny = minxy(2);
-y = miny : (maxy-miny)/10 : maxy
-x = -(w(2)*y+b) / w(1);
-plot(x,y);
+visualize(X_train, labels_train, w, b, 'training data');
+visualize(X_test, labels_test, w, b, 'testing data');
 
 

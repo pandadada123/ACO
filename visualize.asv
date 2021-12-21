@@ -1,4 +1,4 @@
-function [] = visualize(X, labels, w, b, name)
+function [] = visualize(X, labels, name, w, b)
 % visualize - plots every point in x, blue if labeled -1, red if labeled 1.
     x = X(:, 1).';
     y = X(:, 2).';
@@ -8,13 +8,14 @@ function [] = visualize(X, labels, w, b, name)
     
     figure('Name', name);
     scatter(x, y, sz, colors, 'filled');
-    hold on
-    maxy = max(y);
-    miny = min(y);
-    yp = miny : (maxy-miny)/10 : maxy;
-    xp = -(w(2)*yp+b) / w(1);
-    plot(xp,yp);
+    
+    maxy = maxy(2);
+    miny = minxy(2);
+    y = miny : (maxy-miny)/10 : maxy
+    x = -(w(2)*y+b) / w(1);
+    plot(x,y);
     
     title(name);
+
 end
 
