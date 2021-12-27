@@ -1,3 +1,6 @@
+clear all
+close all
+
 load("linear_svm.mat");
 
 cvx_begin
@@ -10,6 +13,11 @@ cvx_begin
         end
 cvx_end
  
+% calculate test accuracy
+wb=[w;b];
+Y_hat=predict_SVM(wb,X_test);
+test_accuracy=sum(Y_hat'==labels_test)/numel(labels_test) * 100
+
 % plot the given datasets
 visualize(X_train, labels_train, w, b, 'training data');
 visualize(X_test, labels_test, w, b, 'testing data');
